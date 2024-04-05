@@ -87,7 +87,7 @@ class Login(tk.Tk):
             else:
                 messagebox.showwarning("Error", "Incorrect username or password")    
         else:
-            messagebox.showwarning("Empty Field", "Please Fill Out The Fields")
+            messagebox.showwarning("Empty Field", "Please Fill Out The Entry Fields")
 
 class Window(tk.Tk):
     def __init__(self):
@@ -98,20 +98,57 @@ class Window(tk.Tk):
         self.config(bg="#B3C8CF")
 
         self.frame()
+        self.create_widgets_frame1()
+        self.populate_listbox()
 
     def frame(self):
-        #Frame
-        frame1 = tk.Frame(self, width=400, height=450, bd=5, relief=tk.GROOVE, bg="#F1EEDC")
-        frame2 = tk.Frame(self, width=380, height=450, bd=5, relief=tk.GROOVE, bg="#F1EEDC")
+        # Frame
+        self.frame1 = tk.Frame(self, width=400, height=450, bd=5, relief=tk.GROOVE, bg="#F1EEDC")
+        self.frame2 = tk.Frame(self, width=380, height=450, bd=5, relief=tk.GROOVE, bg="#F1EEDC")
 
-        #Frame pos
-        frame1.place(x=20, y=20)
-        frame2.place(x=450, y=20)
+        # Frame pos
+        self.frame1.place(x=20, y=20)
+        self.frame2.place(x=450, y=20)
 
+    def create_widgets_frame1(self):
+        # Label
+        lbl_customer_name = tk.Label(self.frame1, text="Customer Name:", font=("Arial", 14), bg="#F1EEDC")
+        lbl_menu_title = tk.Label(self.frame1, text="Menu", font=("Arial", 14), bg="#F1EEDC")
+
+        # Lable pos
+        lbl_customer_name.place(x=10, y=10)
+        lbl_menu_title.place(x=160, y=50)
+
+        # Entry
+        ent_customer_name = tk.Entry(self.frame1, width=19, font=("Arial", 14), bg="#fff")
+        ent_search = tk.Entry(self.frame1, width=20, font=("Arial", 14), bg="#fff")
+
+        # Entry pos
+        ent_customer_name.place(x=160, y=10)
+        ent_search.place(x=30, y=80)
+
+        # Listbox
+        self.menu_list = tk.Listbox(self.frame1, width=29, height=12, font=("Arial", 14))
+
+        # Listbox Scrollbar
+        scrollbar = tk.Scrollbar(self.frame1, orient=tk.VERTICAL)
+        scrollbar.place(x=340, y=110, height=280)
+
+        # Listbox Config
+        self.menu_list.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=self.menu_list.yview)
+
+        # Listbox pos
+        self.menu_list.place(x=30, y=110)
+
+    # Test Items For Listbox
+    def populate_listbox(self):
+        for i in range(50):
+            self.menu_list.insert(tk.END, f"Item {i}")
 
 app = Login()
 app.mainloop()
 
-# For Debugging
+# For Main Window
 # app = Window()
 # app.mainloop()
