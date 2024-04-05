@@ -12,4 +12,4 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)]()
+[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://github.com/ChristianJude23/BasicFoodApp-V2/blob/v1.0.0/main.py)
