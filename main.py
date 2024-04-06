@@ -5,7 +5,7 @@ import os
 
 # Color Palette: https://colorhunt.co/palette/b3c8cfbed7dcf1eedce5ddc5
 
-class Login(tk.Tk):
+class LoginWindow(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Basic Food App")
@@ -43,6 +43,7 @@ class Login(tk.Tk):
         # Entry
         self.ent_username = tk.Entry(frame, width=18, font=("Arial", 16), bd=3, relief=tk.GROOVE)
         self.ent_password = tk.Entry(frame, width=18, font=("Arial", 16), bd=3, relief=tk.GROOVE, show="*")
+        self.ent_username.bind('<Return>', lambda event: self.enter())
         self.ent_password.bind('<Return>', lambda event: self.enter())
 
         # Entry pos
@@ -78,18 +79,18 @@ class Login(tk.Tk):
             if credentials:
                 if username == "admin":
                     self.destroy()
-                    win = Window()
+                    win = MainWindow()
                     win.mainloop() 
                 else:
                     self.destroy()
-                    win = Window()
+                    win = MainWindow()
                     win.mainloop()                                         
             else:
                 messagebox.showwarning("Error", "Incorrect username or password")    
         else:
             messagebox.showwarning("Empty Field", "Please Fill Out The Entry Fields")
 
-class Window(tk.Tk):
+class MainWindow(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Basic Food App")
@@ -99,7 +100,8 @@ class Window(tk.Tk):
 
         self.frame()
         self.create_widgets_frame1()
-        self.populate_listbox()
+        
+        self.win_function = MainWinFunction(self)
 
     def frame(self):
         # Frame
@@ -121,11 +123,9 @@ class Window(tk.Tk):
 
         # Entry
         ent_customer_name = tk.Entry(self.frame1, width=19, font=("Arial", 14), bg="#fff")
-        ent_search = tk.Entry(self.frame1, width=20, font=("Arial", 14), bg="#fff")
 
         # Entry pos
         ent_customer_name.place(x=160, y=10)
-        ent_search.place(x=30, y=80)
 
         # Listbox
         self.menu_list = tk.Listbox(self.frame1, width=29, height=12, font=("Arial", 14))
@@ -141,14 +141,24 @@ class Window(tk.Tk):
         # Listbox pos
         self.menu_list.place(x=30, y=110)
 
+    # Window Functionality
+    
+
+class MainWinFunction:
+    def __init__(self, main_window) -> None:
+        self.main_win = main_window
+        self.populate_listbox()
+
     # Test Items For Listbox
     def populate_listbox(self):
         for i in range(50):
-            self.menu_list.insert(tk.END, f"Item {i}")
+            self.main_win.menu_list.insert(tk.END, f"Item {i}")
 
-app = Login()
+
+
+app = LoginWindow()
 app.mainloop()
 
-# For Main Window
-# app = Window()
-# app.mainloop()
+# For Main Window Testing
+# app_test1 = MainWindow()
+# app_test1.mainloop()
