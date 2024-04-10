@@ -8,6 +8,12 @@
 
 :3 ♥
 
+![image](https://github.com/ChristianJude23/BasicFoodApp-V2/assets/152279955/f3278ccb-b956-4337-a404-a262f633cc23)
+
+![image](https://github.com/ChristianJude23/BasicFoodApp-V2/assets/152279955/5757fca0-ea07-4a89-b98d-1ed57c195e22)
+
+
+
 </br>
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
